@@ -46,6 +46,10 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
+
+            Route::prefix('callback')
+                ->middleware('callback')
+                ->group(base_path('routes/callback.php'));
         });
     }
 
@@ -58,6 +62,10 @@ class RouteServiceProvider extends ServiceProvider
     {
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60);
+        });
+
+        RateLimiter::for('callback', function (Request $request) {
+            return Limit::perMinute(500);
         });
     }
 }
