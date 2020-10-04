@@ -15,8 +15,8 @@ class CreateUserCatsTable extends Migration
     {
         Schema::create('user_cats', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
-            $table->bigInteger('cat_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('cat_id');
             $table->boolean('is_liked')->nullable();
             $table->timestamps();
 
