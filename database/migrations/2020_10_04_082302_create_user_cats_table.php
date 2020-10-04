@@ -23,7 +23,7 @@ class CreateUserCatsTable extends Migration
             $table->unique(['user_id', 'cat_id']);
         });
 
-        Schema::create('user_cats', function (Blueprint $table) {
+        Schema::table('user_cats', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('cat_id')->references('id')->on('cats');
         });
